@@ -1,0 +1,25 @@
+ body {
+      background: #f4f7fc;
+      font-family: 'Poppins', sans-serif;
+      padding: 30px;
+    }
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+    .table th {
+      background: #2a5298;
+      color: #fff;
+    }
+    .btn {
+      border-radius: 8px;
+    }
+    .form-label {
+      font-weight: 600;
+    }
+    .car-image {
+      width: 60px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 5px;
+    }

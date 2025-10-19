@@ -1,0 +1,133 @@
+<div class="container-fluid my-4">
+    <div class="row g-4">
+
+        <!-- Car List Section -->
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h4 class="mb-3"><i class="bi bi-car-front-fill text-primary"></i> Car List</h4>
+                    <table class="table table-hover table-striped align-middle text-center">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Sr. No.</th>
+                                    <th>Image</th>
+                                <th>Brand</th>
+                                <th>Model</th>
+                                <th>Year</th>
+                                <th>Color</th>
+                                <th>Daily Rate ($)</th>
+                                <th>Reg No</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of carList; track $index) {
+                            <tr>
+                                <td>{{$index+1  }}</td>
+                                <td>
+                                    <img src={{item.carImage}} class="rounded shadow-sm" alt="car" width="80"
+                                        height="60">
+                                </td>
+
+                                <td>{{item.brand}}</td>
+                                <td>{{item.model}}</td>
+                                <td>{{item.year}}</td>
+                                <td><span class="badge bg-warning">{{item?.color}}</span></td>
+                                <td>${{item.dailyRate}}</td>
+                                <td>{{item.regNo}}</td>
+                                <td>
+                                    <button (click)="onEdit(item)" class="btn btn-sm btn-outline-primary me-2">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button (click)="onDelete(item)" class="btn  btn-sm btn-outline-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+
+                            <!-- Add dynamic rows here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Car Form Section -->
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h4 class="mb-3"><i class="bi bi-plus-circle text-success"></i> Add / Edit Car</h4>
+                    <form #carForm="ngForm">
+
+                        <div class="mb-3">
+                            <label class="form-label">Brand</label>
+                            <input type="text" class="form-control" [(ngModel)]="newCarObj.brand" name="brand"
+                                placeholder="Enter brand" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Model</label>
+                            <input type="text" class="form-control" [(ngModel)]="newCarObj.model" name="model"
+                                placeholder="Enter model" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Year</label>
+                            <input type="number" class="form-control" [(ngModel)]="newCarObj.year" name="year"
+                                placeholder="Enter year" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Color</label>
+                            <input type="text" class="form-control" [(ngModel)]="newCarObj.color" name="color"
+                                placeholder="Enter color">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Daily Rate ($)</label>
+                            <input type="number" class="form-control" [(ngModel)]="newCarObj.dailyRate" name="dailyRate"
+                                placeholder="Enter daily rate">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Car Image URL</label>
+                            <input type="text" class="form-control" [(ngModel)]="newCarObj.carImage" name="carImage"
+                                placeholder="Enter image URL">
+                            <div class="mt-2 text-center">
+                                <img [src]="newCarObj.carImage" class="img-fluid rounded shadow-sm" alt="Car Preview"
+                                    style="max-height: 150px;">
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Registration No</label>
+                            <input type="text" class="form-control" [(ngModel)]="newCarObj.regNo" name="regNo"
+                                placeholder="Enter Reg No">
+                        </div>
+
+                        <div class="d-grid">
+                            @if (newCarObj.carId == 0) {
+                            <button (click)="onSaveCar()" type="button" class="btn btn-success">
+                                <i class="bi bi-save"></i> Save Car
+                            </button>
+                            } @else {
+                            <button (click)="onUpdateCar()" type="button" class="btn btn-warning">
+                                <i class="bi bi-save"></i> Update Car
+                            </button>
+                            }
+
+                            <button type="button" (click)="onClearData()" class="btn btn-danger mt-3">
+                                <i class="bi bi-x-circle"></i> Clear
+                            </button>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

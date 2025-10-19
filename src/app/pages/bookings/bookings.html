@@ -1,0 +1,106 @@
+<div class="container">
+    <h2 class="page-title">🚘 Vehicle Booking Management</h2>
+
+    <div class="row g-4">
+          <!-- DATA TABLE SECTION -->
+      <div class="col-lg-8 col-md-12">
+        <div class="card">
+          <div class="card-header">Bookings List</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover align-middle text-center">
+                <thead>
+                  <tr>
+                    <th>Booking Id</th>
+                    <th>Customer</th>
+                    <th>Mobile</th>
+                    <th>booking ID</th>
+                    <th>Booking Date</th>
+                    <th>Bill (₹)</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Rent Id</th>
+                  </tr>
+                </thead>
+                <tbody id="bookingTable">
+                    @if (bookingList.length > 0) {
+                          @for (item of bookingList; track $index) {
+                            <tr>
+                                <td>{{item.bookingId}}</td>
+                                <td>{{item.customerName}}</td>
+                                <td>{{item.mobileNo}}</td>
+                                <td>{{item.bookingUid}}</td>
+                                <td>{{item?.bookingDate}}</td>
+                                <td>${{item.totalBillAmount}}</td>
+                                <td>{{item.brand}}</td>
+                                <td>{{item.model}}</td>
+                                <td>{{item.bookingUid}}</td>
+                               
+                            </tr>
+                            }
+                    }@else {
+                  <tr>
+                    <td colspan="7" class="text-muted">No bookings yet.</td>
+                  </tr>
+                }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- FORM SECTION -->
+      <div class="col-lg-4 col-md-12">
+        <div class="card">
+          <div class="card-header">Create Booking</div>
+          <div class="card-body">
+            <form [formGroup]="bookingForm" id="bookingForm">
+              <div class="mb-3">
+                <label class="form-label">Customer Name</label>
+                <input type="text" formControlName="customerName" class="form-control" id="CustomerName" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Customer City</label>
+                <input type="text" formControlName="customerCity" class="form-control" id="CustomerCity" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Mobile No</label>
+                <input type="text" formControlName="mobileNo" class="form-control" id="MobileNo" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" formControlName="email" class="form-control" id="Email" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Car ID</label>
+                <select formControlName="carId" class="form-select">
+                    @for (item of carList; track $index) {
+                        <option [value]="item.carId">{{item.regNo}}</option>
+                    }
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Booking Date</label>
+                <input type="datetime-local" formControlName="bookingDate"  class="form-control" id="BookingDate" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Discount (%)</label>
+                <input type="number" formControlName="discount" class="form-control" id="Discount" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Total Bill Amount</label>
+                <input type="number" formControlName="totalBillAmount"  class="form-control" id="TotalBillAmount" />
+              </div>
+
+              <div class="text-center mt-4">
+                <button type="submit" (click)="onSave()" class="btn btn-success px-4">Create</button>
+                <button type="reset" class="btn btn-secondary px-4 ms-2">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    
+    </div>
+  </div>

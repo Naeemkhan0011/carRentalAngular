@@ -1,0 +1,57 @@
+ .parent {
+      height: 100vh;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+    }
+    .login-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      animation: slideIn 1s ease-out;
+    }
+    .login-card h3 {
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333;
+    }
+    .form-control:focus {
+      box-shadow: 0 0 10px rgba(37,117,252,0.4);
+      border-color: #2575fc;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      border: none;
+      transition: transform 0.2s ease-in-out;
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .extra-links {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .extra-links a {
+      color: #2575fc;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .extra-links a:hover {
+      color: #6a11cb;
+    }

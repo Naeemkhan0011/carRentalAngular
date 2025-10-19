@@ -1,0 +1,73 @@
+  body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .page-title {
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: #0d47a1;
+    }
+
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      background: #fff;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-header {
+      background: linear-gradient(90deg, #0d6efd, #00b4d8);
+      color: #fff;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 15px 15px 0 0;
+      font-size: 1.2rem;
+      padding: 15px 0;
+    }
+
+    .form-control {
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 5px rgba(13, 110, 253, 0.4);
+      transform: scale(1.02);
+    }
+
+    .btn {
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-success {
+      background: linear-gradient(90deg, #00b894, #00cec9);
+      border: none;
+    }
+
+    .btn-success:hover {
+      transform: translateY(-2px);
+    }
+
+    .table th {
+      background: #0d6efd;
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
